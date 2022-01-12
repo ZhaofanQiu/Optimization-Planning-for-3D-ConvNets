@@ -1,0 +1,25 @@
+dataset:
+  # data
+  dataset_class: video_dataset
+  format: LMDB
+  list_file: dataset/hmdb51_frame128_train_list.txt
+  root_path: /hmdb51_root_path
+  num_classes: 51
+
+  eva_list_file: dataset/hmdb51_frame128_test_list.txt
+  eva_root_path: /hmdb51_root_path
+
+  # random augmentation parameters (estimated)
+  transform_type: rand_augment
+  ra_n: 3
+  ra_m: 17
+
+optimizer:
+  # optimization
+  base_learning_rate: 0.01
+  warmup_epoch: 1
+  epochs: 64
+  loss_weight: 1.
+
+network:
+  dropout_ratio: 0.9

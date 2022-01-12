@@ -1,0 +1,36 @@
+base: base_config/hmdb51_base.yml
+dataset:
+  transform_type: default
+#sampling
+sampler:
+  num_segments: [4, 8, 16, 16, 16]
+  clip_length: [4, 4, 4, 4, 4]
+  num_steps: [1, 1, 1, 1, 1]
+  eva_num_segments: 16
+  eva_num_clips: 10
+  # train
+  batch_size: [16, 8, 4, 4, 4]
+  iter_size: [4, 8, 16, 16, 16]
+
+network:
+  # network
+  net_name: dg_p3d_resnet50
+  # optimization
+  pretrained_model: pretrained_weights/resnet50-19c8e357.pth
+  eva_model: output/current.pth
+
+  remove_fc: True
+  transfer_weights: True
+  frozen_bn: [False, False, True, True, True]
+
+optimizer:
+  # optimization
+  eva_inter: False
+
+  lr_scheduler: step
+  lr_decay_epochs: [1000000]
+  lr_decay_rate: 1.0
+
+  base_learning_rate: [0.01, 0.01, 0.001, 0.0001, 0.00001]
+  warmup_epoch: -1
+  epochs: [17, 9, 19, 6, 7]

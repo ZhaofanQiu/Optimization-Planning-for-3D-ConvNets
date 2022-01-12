@@ -1,0 +1,23 @@
+base: base_config/kinetics_base.yml
+dataset:
+  transform_type: default
+#sampling
+sampler:
+  num_segments: 1
+  clip_length: 16
+  num_steps: 1
+  eva_num_segments: 1
+  eva_num_clips: 20
+  # train
+  batch_size: 16
+  iter_size: 4
+
+network:
+  # network
+  net_name: r2p1d_resnet50
+  # optimization
+  pretrained_model: pretrained_weights/resnet50-19c8e357.pth
+  eva_model: output/current.pth
+
+  remove_fc: True
+  transfer_weights: True
