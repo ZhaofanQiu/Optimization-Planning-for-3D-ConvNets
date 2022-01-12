@@ -1,0 +1,7 @@
+/output/
+.ipynb_checkpoints/
+*.pyc
+/record_backup/
+/test_*.py
+*.o
+*.so
